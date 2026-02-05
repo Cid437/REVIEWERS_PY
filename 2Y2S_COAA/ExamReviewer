@@ -1,0 +1,233 @@
+import random
+
+question_sets = {
+    "A": [
+        ("What is a system?", 
+         ["A. A random process", "B. An arrangement of components working together", "C. A software only", "D. A hardware device"], "B"),
+
+        ("What is an embedded system?", 
+         ["A. A desktop computer", "B. A programmable or fixed system combining hardware and software",
+          "C. A mobile application", "D. A cloud service"], "B"),
+
+        ("Who developed the Apollo Guidance System?", 
+         ["A. Bill Gates", "B. Charles Stark Draper", "C. Steve Jobs", "D. Alan Turing"], "B"),
+
+        ("Which year was the first microcontroller developed?", 
+         ["A. 1960", "B. 1965", "C. 1968", "D. 1971"], "D"),
+
+        ("Which OS was the first embedded OS?", 
+         ["A. Linux", "B. Windows CE", "C. VxWorks", "D. DOS"], "C"),
+
+        ("Microprocessors usually operate at what speed?", 
+         ["A. 16–20 MHz", "B. 1–2 MHz", "C. 2–4 GHz", "D. 100 KHz"], "C"),
+
+        ("Which component is NOT inside a microcontroller?", 
+         ["A. CPU", "B. RAM", "C. ROM", "D. External GPU"], "D"),
+
+        ("Microcontrollers are mainly used for?", 
+         ["A. Gaming", "B. Control-oriented applications", "C. Video editing", "D. Servers"], "B"),
+
+        ("Arduino is best described as?", 
+         ["A. A microprocessor", "B. A microcontroller motherboard", 
+          "C. An operating system", "D. A compiler"], "B"),
+
+        ("Which year was Arduino developed?", 
+         ["A. 2000", "B. 2003", "C. 2005", "D. 2008"], "C"),
+
+        ("Arduino uses which IDE?", 
+         ["A. Eclipse", "B. Visual Studio", "C. Arduino IDE", "D. NetBeans"], "C"),
+
+        ("Which voltage does Arduino UNO operate on?", 
+         ["A. 3.3V", "B. 5V", "C. 9V", "D. 12V"], "B"),
+
+        ("How many digital I/O pins does Arduino UNO have?", 
+         ["A. 10", "B. 12", "C. 14", "D. 16"], "C"),
+
+        ("Which Arduino pin is connected to the built-in LED?", 
+         ["A. Pin 0", "B. Pin 5", "C. Pin 10", "D. Pin 13"], "D"),
+
+        ("ESP32 was developed by which company?", 
+         ["A. Arduino", "B. Espressif Systems", "C. Intel", "D. Texas Instruments"], "B"),
+
+        ("ESP32 supports which feature?", 
+         ["A. Wi-Fi only", "B. Bluetooth only", "C. Wi-Fi and Bluetooth", "D. Ethernet only"], "C"),
+
+        ("Arduino shields are used for?", 
+         ["A. Decoration", "B. Extra functionality", "C. Storage", "D. Cooling"], "B"),
+
+        ("Which law states V = IR?", 
+         ["A. Kirchhoff’s Law", "B. Ohm’s Law", "C. Faraday’s Law", "D. Coulomb’s Law"], "B"),
+
+        ("Power is calculated as?", 
+         ["A. V/I", "B. I/R", "C. V × I", "D. R × I"], "C"),
+
+        ("GND refers to?", 
+         ["A. Signal", "B. Power supply", "C. Ground", "D. Output"], "C"),
+    ],
+
+    "B": [
+        ("Which function runs once in Arduino?", 
+         ["A. loop()", "B. main()", "C. setup()", "D. start()"], "C"),
+
+        ("Which function runs repeatedly?", 
+         ["A. setup()", "B. loop()", "C. repeat()", "D. run()"], "B"),
+
+        ("Which symbol ends a statement?", 
+         ["A. :", "B. ,", "C. ;", "D. ."], "C"),
+
+        ("Which symbol is used for single-line comments?", 
+         ["A. /* */", "B. //", "C. ##", "D. --"], "B"),
+
+        ("Which data structure stores multiple values of same type?", 
+         ["A. Function", "B. Variable", "C. Array", "D. Loop"], "C"),
+
+        ("Which function sets a pin as INPUT or OUTPUT?", 
+         ["A. digitalWrite()", "B. digitalRead()", "C. pinMode()", "D. setPin()"], "C"),
+
+        ("digitalWrite() outputs?", 
+         ["A. PWM", "B. HIGH or LOW", "C. Analog value", "D. Voltage only"], "B"),
+
+        ("Logic HIGH represents?", 
+         ["A. 0V", "B. 0–0.8V", "C. 2–5V", "D. −5V"], "C"),
+
+        ("digitalRead() returns?", 
+         ["A. Voltage", "B. Integer", "C. HIGH or LOW", "D. PWM"], "C"),
+
+        ("delay(1000) means?", 
+         ["A. 1 microsecond", "B. 1 millisecond", "C. 1 second", "D. 10 seconds"], "C"),
+
+        ("Which function initializes serial communication?", 
+         ["A. Serial.print()", "B. Serial.begin()", "C. Serial.read()", "D. Serial.open()"], "B"),
+
+        ("Default baud rate example?", 
+         ["A. 4800", "B. 9600", "C. 115200", "D. All of the above"], "D"),
+
+        ("Which function prints text with newline?", 
+         ["A. Serial.print()", "B. Serial.write()", "C. Serial.println()", "D. Serial.read()"], "C"),
+
+        ("Serial.available() checks?", 
+         ["A. Voltage", "B. Pin mode", "C. Available data", "D. Baud rate"], "C"),
+
+        ("analogRead() range is?", 
+         ["A. 0–255", "B. 0–1023", "C. 0–512", "D. 0–4096"], "B"),
+
+        ("Which pin supports PWM?", 
+         ["A. Pin 2", "B. Pin 4", "C. Pin 5", "D. Pin 7"], "C"),
+
+        ("analogWrite() range is?", 
+         ["A. 0–1023", "B. 0–512", "C. 0–255", "D. 0–100"], "C"),
+
+        ("PWM stands for?", 
+         ["A. Power Width Mode", "B. Pulse Width Modulation", 
+          "C. Program Wave Mode", "D. Pulse Wire Mode"], "B"),
+
+        ("Which motor allows precise angle control?", 
+         ["A. DC Motor", "B. Servo Motor", "C. Stepper Motor", "D. AC Motor"], "B"),
+
+        ("Servo motors usually rotate from?", 
+         ["A. 0–90°", "B. 0–180°", "C. 0–360°", "D. Continuous"], "B"),
+    ],
+
+    "C": [
+        ("Which protocol uses SDA and SCL?", 
+         ["A. UART", "B. SPI", "C. I2C", "D. USB"], "C"),
+
+        ("SPI is what type of communication?", 
+         ["A. Asynchronous", "B. Half duplex", "C. Synchronous", "D. Wireless"], "C"),
+
+        ("UART maximum distance is about?", 
+         ["A. 5 feet", "B. 50 feet", "C. 500 feet", "D. 1 km"], "B"),
+
+        ("Which sensor detects light?", 
+         ["A. PIR", "B. Ultrasonic", "C. LDR", "D. MQ"], "C"),
+
+        ("Which sensor detects motion?", 
+         ["A. LDR", "B. PIR", "C. Gas", "D. RFID"], "B"),
+
+        ("Ultrasonic sensors measure distance using?", 
+         ["A. Light", "B. Heat", "C. Sound waves", "D. Radio"], "C"),
+
+        ("HC-SR04 range is?", 
+         ["A. 1–50 cm", "B. 2–400 cm", "C. 10–100 cm", "D. 5–200 cm"], "B"),
+
+        ("RFID stands for?", 
+         ["A. Radio Frequency Identification", "B. Rapid File ID", 
+          "C. Random Frequency ID", "D. Radio File Device"], "A"),
+
+        ("Which RFID frequency does RC522 use?", 
+         ["A. 125 kHz", "B. 433 MHz", "C. 13.56 MHz", "D. 900 MHz"], "C"),
+
+        ("IoT stands for?", 
+         ["A. Internet of Technology", "B. Interface of Things",
+          "C. Internet of Things", "D. Integration of Tech"], "C"),
+
+        ("Which is NOT an IoT feature?", 
+         ["A. Sensors", "B. AI", "C. Active engagement", "D. Manual control only"], "D"),
+
+        ("Bluetooth operates at?", 
+         ["A. 900 MHz", "B. 1.8 GHz", "C. 2.45 GHz", "D. 5 GHz"], "C"),
+
+        ("HC-05 default baud rate?", 
+         ["A. 4800", "B. 9600", "C. 115200", "D. 14400"], "B"),
+
+        ("Which is a low-power mesh protocol?", 
+         ["A. WiFi", "B. ZigBee", "C. GSM", "D. GPS"], "B"),
+
+        ("GPS is used for?", 
+         ["A. Messaging", "B. Internet access", "C. Location tracking", "D. Voice calls"], "C"),
+
+        ("GPRS is mainly for?", 
+         ["A. Satellite navigation", "B. Data transmission", 
+          "C. Audio streaming", "D. Image processing"], "B"),
+
+        ("Which is a passive sensor?", 
+         ["A. LDR", "B. Ultrasonic", "C. PIR", "D. RFID"], "C"),
+
+        ("Which module controls AC loads?", 
+         ["A. Servo", "B. Relay", "C. LCD", "D. RFID"], "B"),
+
+        ("LCD stands for?", 
+         ["A. Light Control Device", "B. Liquid Crystal Display",
+          "C. Low Current Display", "D. Logical Control Display"], "B"),
+
+        ("Which pin controls LCD contrast?", 
+         ["A. RS", "B. R/W", "C. Enable", "D. Vo"], "D"),
+    ]
+}
+
+
+def run_exam():
+    print("\nCOAA REVIEWER EXAM")
+    choice = input("Choose a set (A / B / C): ").strip().upper()
+
+    if choice not in question_sets:
+        print("Invalid choice.")
+        return
+
+    questions = question_sets[choice][:]
+    random.shuffle(questions)
+
+    score = 0
+    print(f"\n--- SET {choice} ---\n")
+
+    for i, (q, opts, ans) in enumerate(questions, 1):
+        print(f"{i}. {q}")
+        for o in opts:
+            print(o)
+        user = input("Answer (A/B/C/D): ").strip().upper()
+
+        if user == ans:
+            score += 1
+            print("Correct!\n")
+        else:
+            print(f"Wrong! Correct answer: {ans}\n")
+
+    print(f"Final Score: {score} / 20")
+
+
+while True:
+    run_exam()
+    again = input("\nTake another set? (Y/N): ").strip().upper()
+    if again != "Y":
+        print("Good luck on your COAA exam! 💪")
+        break
